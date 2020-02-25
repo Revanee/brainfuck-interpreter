@@ -8,10 +8,7 @@ import java.util.List;
 
 public class Parser {
   public static InstructionTree parseInstructionTree(List<Token> tokens) {
-    System.out.println("Parsing " + tokens.toString());
     Pair<List<Instruction>, List<Token>> splitInstructions = splitInstructionSequence(tokens);
-
-    System.out.println("Split instructions " + splitInstructions.toString());
 
     if (splitInstructions.getSize() == 1)
       return new InstructionTree(splitInstructions.getValue0(), null, null);
@@ -19,7 +16,6 @@ public class Parser {
     List<Token> childAndNext = splitInstructions.getValue1();
 
     Pair<List<Token>, List<Token>> splitChildAndNext = splitFirstBlock(childAndNext);
-    System.out.println("Split child and next " + splitChildAndNext.toString());
     InstructionTree childInstructionTree = null;
     try {
       childInstructionTree = parseInstructionTree(splitChildAndNext.getValue0());
