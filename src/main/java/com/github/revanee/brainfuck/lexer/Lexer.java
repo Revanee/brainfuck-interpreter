@@ -4,6 +4,7 @@ import com.github.revanee.brainfuck.language.Token;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Lexer {
 
@@ -21,6 +22,11 @@ public class Lexer {
   }
 
   public static Token parseToken(Character character) {
-    return Token.parseToken(character).get();
+    Optional<Token> token = Token.parseToken(character);
+    if (token.isEmpty()) {
+      System.err.println("Could not parse token: " + character);
+      return null;
+    }
+    return token.get();
   }
 }
