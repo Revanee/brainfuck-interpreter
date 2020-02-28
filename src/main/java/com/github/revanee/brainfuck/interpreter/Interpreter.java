@@ -1,7 +1,6 @@
 package com.github.revanee.brainfuck.interpreter;
 
 import com.github.revanee.brainfuck.parser.Instruction;
-import com.github.revanee.brainfuck.parser.InstructionTree;
 
 import java.util.List;
 
@@ -19,15 +18,16 @@ public class Interpreter {
 
   public void executeInstructionTree(InstructionTree tree) {
     if (tree.hasInstructions()) {
-      executeInstructions(tree.instructions);
+      List<Instruction> instructions = tree.getInstructions();
+      executeInstructions(instructions);
     }
-    if (tree.hasChildInstructionTree() && !shouldSkipSubBlock()) {
+    if (tree.hasChild() && !shouldSkipSubBlock()) {
       while (shouldRepeatSubBlock()) {
-        executeInstructionTree(tree.childInstructionTree);
+        executeInstructionTree(tree.getChild());
       }
     }
-    if (tree.hasNextInstructionTree()) {
-      executeInstructionTree(tree.nextInstructionTree);
+    if (tree.hasNext()) {
+      executeInstructionTree(tree.getNext());
     }
   }
 
@@ -48,7 +48,7 @@ public class Interpreter {
           break;
         case OUTPUT:
           Integer currentValue = processor.getCurrentValue();
-          System.out.println(currentValue);
+          System.out.print((char) (int) currentValue);
           break;
       }
     });
