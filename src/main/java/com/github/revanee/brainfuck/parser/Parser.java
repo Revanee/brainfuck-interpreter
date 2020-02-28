@@ -1,6 +1,6 @@
 package com.github.revanee.brainfuck.parser;
 
-import com.github.revanee.brainfuck.lexer.Token;
+import com.github.revanee.brainfuck.language.Token;
 import org.javatuples.Pair;
 
 import java.util.ArrayList;
@@ -74,9 +74,9 @@ public class Parser {
         return Instruction.LEFT;
       case RIGHT:
         return Instruction.RIGHT;
-      case IN:
+      case INPUT:
         return Instruction.INPUT;
-      case OUT:
+      case OUTPUT:
         return Instruction.OUTPUT;
       default:
         return null;

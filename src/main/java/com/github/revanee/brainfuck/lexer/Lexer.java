@@ -1,5 +1,7 @@
 package com.github.revanee.brainfuck.lexer;
 
+import com.github.revanee.brainfuck.language.Token;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,25 +21,6 @@ public class Lexer {
   }
 
   public static Token parseToken(Character character) {
-    switch (character) {
-      case '>':
-        return Token.RIGHT;
-      case '<':
-        return Token.LEFT;
-      case '+':
-        return Token.INCREMENT;
-      case '-':
-        return Token.DECREMENT;
-      case ',':
-        return Token.IN;
-      case '.':
-        return Token.OUT;
-      case '[':
-        return Token.OPEN;
-      case ']':
-        return Token.CLOSE;
-      default:
-        return null;
-    }
+    return Token.parseToken(character).get();
   }
 }

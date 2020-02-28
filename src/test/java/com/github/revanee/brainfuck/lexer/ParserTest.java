@@ -1,5 +1,6 @@
 package com.github.revanee.brainfuck.lexer;
 
+import com.github.revanee.brainfuck.language.Token;
 import com.github.revanee.brainfuck.parser.Instruction;
 import com.github.revanee.brainfuck.parser.InstructionTree;
 import com.github.revanee.brainfuck.parser.Parser;
