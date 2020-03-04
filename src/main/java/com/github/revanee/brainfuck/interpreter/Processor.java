@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Processor {
-  private List<Integer> memory = new ArrayList<>(Collections.nCopies(10, 0));
+public class
+Processor {
+  private List<Integer> memory = new ArrayList<>(Collections.nCopies(1000, 0));
   private Integer pointer = 0;
 
   public void moveRight() {
